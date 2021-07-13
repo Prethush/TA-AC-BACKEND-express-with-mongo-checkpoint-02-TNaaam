@@ -1,0 +1,23 @@
+{
+  "name": "eventmanagement",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "build:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.3.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "^3.1.6",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "mongoose": "^5.13.2",
+    "morgan": "~1.9.1",
+    "postcss": "^8.3.5",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.2.4"
+  }
+}

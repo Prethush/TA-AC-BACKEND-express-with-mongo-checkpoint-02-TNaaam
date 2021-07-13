@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/474e96f807.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+    <section class="flex m-12 items-center justify-between text-custom">
+        <div class="flex-60">
+            <h2 class="text-3xl font-bold my-2"><%= event.title %></h2>
+            <% event.categories.forEach(c => { %>
+                <h3 class="inline-block bg-blue-400 p-1 rounded-lg text-white font-bold"><%= c %></h3>
+            <% }) %>
+            <p class="my-4"><%= event.summary %></p>
+            <h3 class="text-xl my-1">Likes: <%= event.likes %></h3>
+            <a href="/events/<%= event.id %>/likes"><i class="far fa-thumbs-up text-green-400 text-2xl"></i></a>
+            <a href="/events/<%= event.id %>/dislikes"><i class="far fa-thumbs-down text-red-400 text-2xl ml-2"></i></a>
+            <di class="flex my-3">
+                <a href="/events/<%= event.id %>/edit" class="bg-green-500 p-1 rounded-lg text-white font-bold hover:bg-green-400">Edit Event</a>
+                <a href="/events/<%= event.id %>/delete" class="bg-red-500 p-1 rounded-lg text-white font-bold hover:bg-red-400 ml-2">Delete Event</a>
+            </div>
+            
+        </div>
+        
+        <div class="flex-35">
+            <h3 class="my-2"><span class="text-2xl font-bold">Hosted By: </span><%= event.host %></h3>
+            <h3 class="my-2"><span class="text-2xl font-bold">At: </span><%= event.location %></h3>
+            <h3 class="my-2"><span class="text-2xl font-bold">Starts on:</span> <%= event.startDate %></h3>
+            <h3 class="my-2"><span class="text-2xl font-bold">Ends on:</span> <%= event.endDate %></h3>
+        </div>
+    </section>
+
+    <section class="w-1/3 mx-12">
+        <form action="/events/<%= event.id %>/remarks" method="POST" class="flex flex-col px-6 py-8 border border-gray-400 rounded-lg">
+            <input type="text" name="title" placeholder="Enter Remarks" class="my-2 bg-gray-200 p-2 rounded-lg border border-gray-300">
+            <input type="text" name="author" placeholder="Author" class="my-2 bg-gray-200 p-2 rounded-lg border border-gray-300">
+            <input type="submit" value="Add Remark" class="my-2 bg-blue-500 font-bold text-white p-2 rounded-lg hover:bg-blue-400">
+        </form>
+    </section>
+
+    <section class="mx-12 mt-8 mb-16">
+        <h2 class="text-3xl font-bold my-4 text-custom">Remarks</h2>
+       
+            <% event.remarks.forEach(ev => { %>
+                <div class="bg-gray-300 p-4 rounded-lg inline-block w-64 ml-6">
+                <h2 class="text-xl font-bold"><%= ev.title %></h2>
+                <h3 class="font-bold my-2"><%= ev.author %></h3>
+                <h4 class="text-xl">Likes:- <%= ev.likes %></h4>
+                <div class="flex my-2">
+                    <a href="/remarks/<%= ev.id %>/likes" class="block"><i class="far fa-thumbs-up text-green-400 text-2xl"></i></a>
+                    <a href="/remarks/<%= ev.id %>/dislikes"><i class="far fa-thumbs-down text-red-400 text-2xl ml-3"></i></a>
+                </div>
+                
+                <a href="/remarks/<%= ev.id %>/edit" class="bg-green-500 p-1 text-xs rounded-lg text-white hover:bg-green-400">Edit</a>
+                <a href="/remarks/<%= ev.id %>/delete" class="bg-red-500 p-1 text-xs rounded-lg text-white hover:bg-red-400 ml-2">Delete</a>
+            </div>
+            <% }) %>
+    </section>
+    <%- include('partials/footer') %>
+</body>
+</html>
