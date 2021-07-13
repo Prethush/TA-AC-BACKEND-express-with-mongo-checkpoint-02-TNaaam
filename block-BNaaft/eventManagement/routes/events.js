@@ -23,15 +23,15 @@ router.get('/', (req, res, next) => {
     Event.distinct('categories').exec((err, categories) => {
         if(err) return next(err);
         res.locals.categories = categories;
-    });
-    Event.distinct('location').exec((err, location) => {
-        if(err) return next(err);
-        res.locals.location = location;
-    });
-    Event.find({}, (err, events) => {
-       if(err) return next(err);
-        res.render('eventList', {events});      
-  });
+        Event.distinct('location').exec((err, location) => {
+            if(err) return next(err);
+            res.locals.location = location;
+            Event.find({}, (err, events) => {
+                if(err) return next(err);
+                 res.render('eventList', {events});      
+           });
+        });
+    }); 
 });
 
 //list a specific event
@@ -115,15 +115,16 @@ router.get('/:id/categories', (req, res, next) => {
     Event.distinct('categories').exec((err, categories) => {
         if(err) return next(err);
         res.locals.categories = categories;
+        Event.distinct('location').exec((err, location) => {
+            if(err) return next(err);
+            res.locals.location = location;
+            Event.find({categories: id},(err, events) => {
+                if(err) return next(err);
+                res.render('eventList', {events});
+            })
+        });
     });
-    Event.distinct('location').exec((err, location) => {
-        if(err) return next(err);
-        res.locals.location = location;
-    });
-    Event.find({categories: id},(err, events) => {
-        if(err) return next(err);
-        res.render('eventList', {events});
-    })
+    
 });
 
 //sort using location
@@ -132,15 +133,17 @@ router.get('/:id/location', (req, res, next) => {
     Event.distinct('categories').exec((err, categories) => {
         if(err) return next(err);
         res.locals.categories = categories;
+        Event.distinct('location').exec((err, location) => {
+            if(err) return next(err);
+            res.locals.location = location;
+            Event.find({location: id}, (err, events) => {
+                if(err) return next(err);
+                res.render('eventList', {events});
+            })
+        });
     });
-    Event.distinct('location').exec((err, location) => {
-        if(err) return next(err);
-        res.locals.location = location;
-    });
-    Event.find({location: id}, (err, events) => {
-        if(err) return next(err);
-        res.render('eventList', {events});
-    })
+    
+    
 });
 
 //sort using dates ascending
@@ -148,16 +151,17 @@ router.get('/ascending/sort', (req, res, next) => {
     Event.distinct('categories').exec((err, categories) => {
         if(err) return next(err);
         res.locals.categories = categories;
-    });
-    Event.distinct('location').exec((err, location) => {
-        if(err) return next(err);
-        res.locals.location = location;
-    });
-    Event.find({}).sort({startDate: 'asc'}).exec((err, events) => {
-        console.log(events);
-        if(err) return next(err);
-        res.render('eventList', {events});
-    })
+        Event.distinct('location').exec((err, location) => {
+            if(err) return next(err);
+            res.locals.location = location;
+            Event.find({}).sort({startDate: 'asc'}).exec((err, events) => {
+                console.log(events);
+                if(err) return next(err);
+                res.render('eventList', {events});
+            })
+        });
+    }); 
+    
 });
 
 //sort using dates descending
