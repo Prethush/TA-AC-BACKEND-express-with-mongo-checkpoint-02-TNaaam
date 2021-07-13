@@ -3,6 +3,7 @@ let router = express.Router();
 let Event = require('../models/events');
 let Remark = require('../models/remarks');
 
+
 //render create event form
 router.get('/new', (req, res, next) => {
     res.render('createEventForm');
