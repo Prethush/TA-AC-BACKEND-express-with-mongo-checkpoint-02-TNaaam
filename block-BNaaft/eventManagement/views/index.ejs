@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+  
+  <%- include('partials/header') %>
+  <h2 class="text-4xl text-center font-bold py-8">Welcome to ANZEvents</h2>
+  <section class="flex justify-between px-10 py-12">
+    <article class="flex-30 border border-gray-500 px-4 py-6 rounded-lg">
+      <img src="/images/adele.jpg" alt="adele" class="w-full object-cover h-64">
+      <h3 class="text-center text-3xl font-bold py-4 text-blue-500">Music Concert</h3>
+      <p class="text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt dolores consequatur exercitationem recusandae facilis quo corrupti commodi quam saepe ducimus odio libero, odit fuga, magni delectus dolore quasi perspiciatis perferendis! Ullam quod quae, labore molestiae unde animi eius dicta cumque tenetur vero eveniet saepe consequuntur quo. Repellat nostrum aliquid vel.</p>
+    </article>
+    <article class="flex-30 border border-gray-500 px-4 py-6 rounded-lg">
+      <img src="/images/football.jpg" alt="adele" class="w-full object-cover h-64">
+      <h3 class="text-center text-3xl font-bold py-4 text-blue-500">Sports Events</h3>
+      <p class="text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt dolores consequatur exercitationem recusandae facilis quo corrupti commodi quam saepe ducimus odio libero, odit fuga, magni delectus dolore quasi perspiciatis perferendis! Ullam quod quae, labore molestiae unde animi eius dicta cumque tenetur vero eveniet saepe consequuntur quo. Repellat nostrum aliquid vel.</p>
+    </article>
+    <article class="flex-30 border border-gray-500 px-4 py-6 rounded-lg">
+      <img src="/images/trekking.jpeg" alt="trekking" class="w-full object-cover h-64">
+      <h3 class="text-center text-3xl font-bold py-4 text-blue-500">Trekking Events</h3>
+      <p class="text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt dolores consequatur exercitationem recusandae facilis quo corrupti commodi quam saepe ducimus odio libero, odit fuga, magni delectus dolore quasi perspiciatis perferendis! Ullam quod quae, labore molestiae unde animi eius dicta cumque tenetur vero eveniet saepe consequuntur quo. Repellat nostrum aliquid vel.</p>
+    </article>
+  </section>
+  <h3 class="text-center font-bold text-blue-500 text-3xl">And Many More...</h3>
+  <div class="text-center py-8">
+    <a href="/events" class="bg-green-500 p-2 text-white font-bold text-xl rounded-lg">Events Page</a>
+  </div>
+  
+  <%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+    <main class="flex">
+        <aside class="min-h-screen bg-green-300 flex-20 px-6 py-8">
+            <h2 class="text-3xl text-blue-500 font-bold border-b-2 border-gray-50 pb-1">Filter</h2>
+            <a href="/events" class="font-bold bg-red-500 text-white inline-block my-3 text-center relative left-14 text-xl p-2 rounded-lg hover:bg-red-400"><h2>Reset</h2></a>
+            <h3 class="text-blue-500 font-bold text-3xl mt-1 mb-2 border-b-2 border-gray-50 pb-1">Categories</h3>
+            <% categories.forEach(c => { %>
+                <a href="/events/<%= c %>/categories"><h3 class="inline-block bg-gray-700 text-white py-0.5 px-1 rounded-lg m-1 hover:bg-gray-500"><%= c %></h3></a>
+            <% }) %>
+            <h3 class="text-blue-500 font-bold text-3xl mt-1 mb-2 border-b-2 border-border pb-1">Locations</h3>
+            <% location.forEach(l => { %>
+                <a href="/events/<%= l %>/location"><h3 class="inline-block bg-gray-700 text-white py-0.5 px-1 rounded-lg m-1 hover:bg-gray-500"><%= l %></h3></a>
+            <% }) %>
+            <h3 class="text-blue-500 font-bold text-3xl mt-1 mb-2 border-b-2 border-border pb-1">Dates</h3>
+            <a href="/events/ascending/sort"><h3 class="inline-block bg-gray-700 text-white py-0.5 px-1 rounded-lg m-1 hover:bg-gray-500">Ascending</h3></a>
+            <a href="/events/descending/sort"><h3 class="inline-block bg-gray-700 text-white py-0.5 px-1 rounded-lg m-1 hover:bg-gray-500">Descending</h3></a>
+        </aside>
+        <section class="min-h-screen flex-80 text-custom mb-12">
+            <h2 class="text-center font-bold text-4xl py-6 ">Events List</h2>
+            <div class="px-12">
+                <% events.forEach(event => { %>
+                    <div class="bg-red-200 px-6 py-6 my-6 rounded-xl">
+                        <h2 class="text-2xl text-red-500 font-bold"><%= event.title %></h2>
+                        <p class="py-4"><%= event.summary.slice(0, 200) %></p>
+                        <a href="/events/<%= event.id %>" class="bg-green-500 p-2 rounded-lg text-white font-bold hover:bg-green-400">Details</a>
+                    </div>
+                    
+                <% }) %>
+            </div>
+            
+        </section>
+    </main>
+    <%- include('partials/footer') %>   
+</body>
+</html>
